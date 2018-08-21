@@ -8,6 +8,9 @@ pipeline {
 	}
 	stages{
 		stage('Build') {
+			options {
+                		timeout(time: 15, unit: 'SECONDS') 
+            	}
 			steps {
 				bat "cd D:\\devSoft\\apache-maven-3.5.3\\bin"
 				bat 'mvn -B -DskipTests clean package'
@@ -34,7 +37,7 @@ pipeline {
         	always { 
             		emailext body: '''Welcome to Jenkins email alert.
 		Thanks,
-		Anthony''', subject: "Jenkins Job : ${JOB_ID} had run with ${currentBuild.result} status.", to: "${params.email}"
+		Anthony''', subject: "Jenkins Job : ${env.JOB_ID} had run with ${currentBuild.result} status.", to: "${params.email}"
         	}
     	}
 	
