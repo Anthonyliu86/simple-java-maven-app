@@ -3,6 +3,9 @@ pipeline {
 	agent {
 		label 'win'
 	}
+	parameters {
+        	text(name: 'EMail', defaultValue: 'yuangen.liu@oracle.com', description: 'Enter the user email address.')
+	}
 	stages{
 		stage('Build') {
 			steps {
@@ -20,12 +23,19 @@ pipeline {
                 		}
             		}
 		}
-		stage('Deliver') { 
+		stage('Depoly') { 
             		steps {
                 		bat './jenkins/scripts/Depoly.bat' 
             		}
         	}
 		
 	}
+	post{ 
+        	always { 
+            		emailext body: '''Welcome to Jenkins email alert.
+			Thanks,
+			Anthony''', subject: 'Jenkins Job : ${env.JOB_ID} had run with ${currentBuild.result} status.', to: 'yuangen.liu@oracle.com'
+        	}
+    	}
 	
 }
