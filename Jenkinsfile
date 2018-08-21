@@ -20,6 +20,11 @@ pipeline {
                 		}
             		}
 		}
+		stage('Deliver') { 
+            		steps {
+                		bat './jenkins/scripts/Depoly.bat' 
+            		}
+        	}
 		
 	}
 	
