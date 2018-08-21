@@ -34,7 +34,7 @@ pipeline {
         	always { 
             		emailext body: '''Welcome to Jenkins email alert.
 		Thanks,
-		Anthony''', subject: 'Jenkins Job : ${env.JOB_ID} had run with ${currentBuild.result} status.', to: ${params.EMail}
+		Anthony''', subject: "Jenkins Job : ${env.JOB_ID} had run with ${currentBuild.result} status.", to: "${params.EMail}"
         	}
     	}
 	
