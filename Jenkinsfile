@@ -1,7 +1,7 @@
 pipeline {
 	
 	agent {
-		label ‘win’
+		label 'win'
 	}
 	stages{
 		stage('Build') {
