@@ -4,7 +4,7 @@ pipeline {
 		label 'win'
 	}
 	parameters {
-        	text(name: 'EMail', defaultValue: 'yuangen.liu@oracle.com', description: 'Enter the user email address.')
+        	string(name: 'email', defaultValue: 'yuangen.liu@oracle.com', description: 'Enter the user email address.')
 	}
 	stages{
 		stage('Build') {
@@ -34,7 +34,7 @@ pipeline {
         	always { 
             		emailext body: '''Welcome to Jenkins email alert.
 		Thanks,
-		Anthony''', subject: "Jenkins Job : ${env.JOB_ID} had run with ${currentBuild.result} status.", to: "${params.EMail}"
+		Anthony''', subject: "Jenkins Job : ${JOB_ID} had run with ${currentBuild.result} status.", to: "${params.email}"
         	}
     	}
 	
