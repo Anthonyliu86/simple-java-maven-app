@@ -4,7 +4,7 @@ pipeline {
 		label 'win'
 	}
 	parameters {
-        	string(name: 'email', defaultValue: 'yuangen.liu@oracle.com', description: 'Enter the user email address.')
+        	string(name: 'email', defaultValue: 'xxxx@ccc.com', description: 'Enter the user email address.')
 	}
 	stages{
 		stage('Build') {
