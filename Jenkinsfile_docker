@@ -1,11 +1,14 @@
 pipeline {
     agent {
-        docker { image 'jenkinsci/blueocean' }
+        label 'slave-1'
     }
     stages {
-        stage('Test') {
+        stage('Maven Clean') {
+            agent {
+                docker { image 'maven:3.5.4-jdk-8' }
+            }
             steps {
-                sh 'docker -v'
+                sh 'mvn --version'
             }
         }
     }
