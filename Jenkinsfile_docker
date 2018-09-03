@@ -3,13 +3,24 @@ pipeline {
         label 'slave-1'
     }
     stages {
-        stage('Maven Clean') {
+        stage('Build') {
             agent {
                 docker { image 'maven:3.5.4-jdk-8' }
             }
             steps {
                 sh 'mvn --version'
             }
+            steps {
+                sh 'mvn -B -DskipTests clean package'
+            }
+        }
+        stages('Test') {
+        
+            echo 'Test'
+        }
+        
+        stages('Deploy') {
+            echo 'Depoly'
         }
     }
 }
