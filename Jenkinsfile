@@ -1,9 +1,7 @@
 pipeline {
 	
 	agent any
-	parameters {
-        	string(name: 'email', defaultValue: 'xxxx@ccc.com', description: 'Enter the user email address.')
-	}
+	
 	stages{
 		stage('Build') {
 			options {
@@ -31,12 +29,6 @@ pipeline {
         	}
 		
 	}
-	post{ 
-        	always { 
-            		emailext body: '''Welcome to Jenkins email alert.
-		Thanks,
-		Anthony''', subject: "Jenkins Job : ${env.JOB_ID} had run with ${currentBuild.result} status.", to: "${params.email}"
-        	}
-    	}
+	
 	
 }
