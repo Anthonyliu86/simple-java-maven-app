@@ -14,13 +14,7 @@ pipeline {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
-        stages('Test') {
-        
-            echo 'Test'
-        }
-        
-        stages('Deploy') {
-            echo 'Depoly'
-        }
+       
+       
     }
 }
