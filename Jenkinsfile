@@ -1,8 +1,6 @@
 pipeline {
 	
-	agent {
-		label 'win'
-	}
+	agent any
 	parameters {
         	string(name: 'email', defaultValue: 'xxxx@ccc.com', description: 'Enter the user email address.')
 	}
