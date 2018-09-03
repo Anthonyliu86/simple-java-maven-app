@@ -4,11 +4,8 @@ pipeline {
 	
 	stages{
 		stage('Build') {
-			options {
-                		timeout(time: 15, unit: 'SECONDS') 
-            	}
 			steps {
-				sh "cd /tmp/apache-maven-3.5.4 "
+				sh "cd /tmp/apache-maven-3.5.4/bin "
 				sh 'mvn -B -DskipTests clean package'
 			}
 		}
