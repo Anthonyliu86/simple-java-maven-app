@@ -12,13 +12,13 @@ pipeline {
                 		timeout(time: 15, unit: 'SECONDS') 
             	}
 			steps {
-				bat "cd D:\\devSoft\\apache-maven-3.5.3\\bin"
-				bat 'mvn -B -DskipTests clean package'
+				sh "cd /tmp/apache-maven-3.5.4 "
+				sh 'mvn -B -DskipTests clean package'
 			}
 		}
 		stage('Test') {
 			steps {
-                		bat 'mvn test'
+                		sh 'mvn test'
             }
             		post {
                 		always {
@@ -28,7 +28,7 @@ pipeline {
 		}
 		stage('Depoly') { 
             		steps {
-                		bat './jenkins/scripts/Depoly.bat' 
+                		sh './jenkins/scripts/Depoly.bat' 
             		}
         	}
 		
