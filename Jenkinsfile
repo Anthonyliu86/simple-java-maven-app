@@ -5,8 +5,6 @@ pipeline {
 	stages{
 		stage('Build') {
 			steps {
-				sh "cd /tmp/apache-maven-3.5.4/bin "
-				sh 'mvn -v'
 				sh 'mvn -B -DskipTests clean package'
 			}
 		}
@@ -22,7 +20,7 @@ pipeline {
 		}
 		stage('Depoly') { 
             		steps {
-                		sh './jenkins/scripts/Depoly.bat' 
+                		sh './jenkins/scripts/deliver.sh' 
             		}
         	}
 		
