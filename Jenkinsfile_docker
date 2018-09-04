@@ -1,6 +1,7 @@
 pipeline {
     agent {
-        label 'slave-1'
+        //label 'slave-1'
+        label any
     }
     stages {
         stage('Build') {
@@ -8,7 +9,6 @@ pipeline {
                 docker { image 'maven:3.5.4-jdk-8' }
             }
             steps {
-                sh 'mvn --version'
                 sh 'mvn -B -DskipTests clean package'
             }
         }
