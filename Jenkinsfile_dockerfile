@@ -11,6 +11,7 @@ pipeline {
             agent{
                 docker {
                     image "maven-test01"
+                    args  '-v /root/.m2:/root/.m2'
                 }
             }
             steps {
@@ -22,6 +23,7 @@ pipeline {
             agent{
                 docker {
                     image "maven-test01"
+                    args  '-v /root/.m2:/root/.m2'
                 }
             }
             steps {
