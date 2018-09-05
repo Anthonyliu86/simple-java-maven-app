@@ -28,9 +28,13 @@ pipeline {
             }
             steps {
                 sh 'mvn test'
-                sh 'sleep 3s'
             }
         }
-       
+        
+       stage('Delete image file') {
+            steps {
+                sh 'docker rmi maven-test01'
+            }
+        }
     }
 }
