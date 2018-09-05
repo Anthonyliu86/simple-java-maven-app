@@ -1,7 +1,9 @@
 pipeline {
     agent { 
          dockerfile {
-            additionalBuildArgs "-t maven-test1"
+             filename 'Dockerfile'
+             -t   'maven-test01'
+             additionalBuildArgs "-t maven-test1"
          }
          
     }
