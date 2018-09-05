@@ -1,7 +1,9 @@
 pipeline {
     agent { 
-         dockerfile true 
-         additionalBuildArgs "-t maven-test1"
+         dockerfile {
+            additionalBuildArgs "-t maven-test1"
+         }
+         
     }
 
     stages {
