@@ -28,7 +28,7 @@ pipeline {
             }
             steps {
                 sh 'mvn test'
-                sh 'sleep 3m'
+                sh 'sleep 3s'
             }
         }
        
