@@ -1,20 +1,29 @@
 pipeline {
-    agent { 
-         dockerfile {
-             filename 'Dockerfile'
-             -t   "maven-test01"
-         }
-         
-    }
-
+    agent any
     stages {
+        stage('Build image') {
+            steps {
+                sh 'docker build -t maven-test01 .'
+            }
+        }
+        
         stage('Build') {
+            agent{
+                docker {
+                    image "maven-test01"
+                }
+            }
             steps {
                 sh 'mvn -B -DskipTests clean package'
             }
         }
         
         stage('Test') {
+            agent{
+                docker {
+                    image "maven-test01"
+                }
+            }
             steps {
                 sh 'mvn test'
                 sh 'sleep 3m'
